@@ -16,4 +16,5 @@ def projects(request):
 def contact(request):
 	return render(request,'sorry.html')
 	
-	
+def handling_404(request,exception):
+	return render(request,'sorry.html',{})
