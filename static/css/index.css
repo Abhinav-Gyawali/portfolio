@@ -1,0 +1,91 @@
+.first-section{
+display:flex;
+justify-content:space-around;
+margin:23px 0;
+}
+.first-section > div{
+width:36%;
+}
+.right-section img{
+position:relative;
+padding:30px 30px 0 0;
+margin-left:-50px;
+width:400px;
+height:400px;
+-moz-user-select: -moz-none;
+-khtml-user-select: none;
+-webkit-user-select: none;
+-o-user-select: none;
+user-select: none;
+pointer-events:none;
+}
+.left-section{
+font-size:40px;
+font-weight:700;
+padding:8vh 0;
+overflow:hidden;
+}
+.left-section .name{
+color:blueviolet;
+}
+.left-section .dynamic-text {
+height:60px;
+line-height:60px;
+/*overflow:hidden;*/
+}
+.left-section span{
+color:grey;
+}
+.left-section .dynamic-text{
+padding-left:15px;
+}
+.left-section span{
+position:relative;
+}
+.left-section span:before{
+content:"";
+position:absolute;
+margin-top:4px;
+margin-left:4px;
+width:100%;
+height:100%;
+background:RGB(0,0,33);
+border-left:5px solid grey;
+left:0;
+animation:typing 4s steps(12) infinite;
+}
+@keyframes typing {
+  40%, 60%{
+  left: calc(100% + 4px);
+  }
+  100%{
+  left: 0%;
+  }
+}
+.right-section{
+background:none;
+}
+.anim-left-section {
+display:inline-flex;
+}
+@media (min-width:501px){
+.first-section > div{
+margin:0 0 0 5px;
+}
+}
+@media (max-width:500px) {
+.first-section{
+flex-direction:column;
+align-items:center;
+}
+.first-section > div {
+width:80%;
+}
+.left-section{
+margin:-20px 0 0 0;
+}
+.right-section{
+margin:-40px 0 40px 30px;
+}
+
+}

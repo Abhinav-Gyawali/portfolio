@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block style %}index.css{% endblock style %}
+{% block title %}Home{% endblock title %}
+{% block body %}
+<section class="first-section">
+<div class="left-section">
+Hi!<br>
+Myself <nobr class="name">Abhinav.</nobr><br>
+<div class="anim-left-section">
+I'm a <span class="dynamic-text"></span>
+</div><br>
+</div>
+<div class="right-section">
+<img src="static/images/developer.png">
+</div>
+</section>
+<script>
+        const text = document.querySelector(".dynamic-text");
+        const textLoad = () => {
+            setTimeout(() => {
+                text.textContent = "Developer.";
+            }, 0);
+            setTimeout(() => {
+                text.textContent = "Designer.";
+            }, 4000);
+            setTimeout(() => {
+                text.textContent = "Student.";
+            }, 8000); //1s = 1000 milliseconds
+        }
+        textLoad();
+        setInterval(textLoad, 12000);
+    </script>
+{% endblock body %}
