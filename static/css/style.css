@@ -23,21 +23,22 @@ justify-content:space-around;
 align-items:center;
 background :RGB(18,18,62);
 z-index:3;
-position:sticky;
+position:relative;
 }
 nav .brand{
 font-weight:700;
-font-size:1.7rem;
+font-size:2vw;
 z-index:4;
 }
 nav ul{
 display:flex;
+align-items:center;
 justify-content:center;
 }
 nav ul li{
 list-style:none;
-padding:10px;
-margin:0 18px;
+padding:3%;
+margin:0 4%;
 }
 @media (min-width: 769px) {
 nav ul li:hover,nav ul li:focus{
@@ -89,18 +90,18 @@ display:block;
 nav ul{
 padding:5px 0px 10px 0px;
 position: fixed;
+background :RGB(18,18,62);
 height:27vh;
 top: -100%;
 left:0;
 width: 100%;
 display:block;
-background:RGB(18,18,62);
 z-index:-1;
 transition:all 0.8s;
 font-size:1.2rem;
 }
 nav .brand{
-font-size:1.5em;
+font-size:3vh;
 }
 nav ul li{
 padding-left:-7px;
@@ -118,8 +119,8 @@ z-index:4;
 }
 nav .menu-btn i{
 position: relative;
+margin-left:159px;
 top:12px;
-margin-left:250px;
 transform: translateY(-50%);
 }
 nav ul.active{
