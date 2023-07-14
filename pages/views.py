@@ -114,8 +114,10 @@ def handleLogout(request):
 
 
 def handling_404(request, exception):
-    return render(request, 'sorry.html', {})
-
+    return render(request, '404.html', {})
+    
+def handling_500(request, exception):
+    return render(request, '500.html', {})
 
 """
 @csrf_exempt
