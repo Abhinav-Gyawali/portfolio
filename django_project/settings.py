@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pages', 
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
@@ -141,6 +142,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 PASSWORD_RESET_TIMEOUT = 14400
-
 
 
