@@ -12,3 +12,4 @@ requests==2.31.0
 django-tinymce
 django-crispy-forms
 django-recaptcha
+six
