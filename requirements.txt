@@ -6,3 +6,9 @@ tzdata==2023.3
 gunicorn
 whitenoise==6.5.0
 requests==2.31.0
+
+
+
+django-tinymce
+django-crispy-forms
+django-recaptcha
