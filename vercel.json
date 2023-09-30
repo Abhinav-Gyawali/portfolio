@@ -18,14 +18,14 @@
     }
   ],
   "routes": [
-    {
+    /*{
     "src": "/static/css/(.*)",
     "dest": "/static/css/$1"
     },
     {
     "src": "/static/images/(.*)",
     "dest": "/static/images/$1"
-    },
+    },*/
     {
     "src": "/static/(.*)",
     "dest": "/static/$1"
