@@ -8,6 +8,7 @@ body {
   font-family: 'Poppins', sans-serif;
   color: white;
   z-index: -1;
+  overflow-x:hidden;
 }
 
 a {
@@ -188,4 +189,7 @@ nav .menu-btn i {
 img {
   
 }
+
+
+/* search  */
 

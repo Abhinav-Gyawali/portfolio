@@ -3,6 +3,17 @@
 {% block title %}Home{% endblock title %}
 {% block body %}
 <section class="first-section">
+
+
+<div class="search">
+<form action="/search" method="post" id="search-form">
+{% csrf_token %}
+        <input type="text" class="search-box" name="search-title" id="search-title" placeholder="Search...">
+        <input id="search_data" value="" type="submit">
+        </form>
+        <button onClick="activity()" class="search-btn"><i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i></button>
+        <button class="close-btn"><i class="fa-solid fa-xmark" style="color: #0000000;"></i></button>
+      </div>
 <div class="left-section">
 Hi!<br>
 Myself <nobr class="name">Abhinav.</nobr><br>
@@ -98,6 +109,31 @@ I'm a <span class="dynamic-text"></span>
 </div>
 
 </section>
+<script type="javascript">
+
+</script>
+<script type="text/javascript">
+const searchBox = document.querySelector('.search-box');
+const searchBtn = document.querySelector('.search-btn');
+const search = document.querySelector('.search');
+const closeBtn = document.querySelector('.close-btn');
+
+searchBtn.addEventListener('click', function(){
+  console.log(search.classList.contains('active'));
+  if(search.classList.contains('active')){
+    searchBox.value = ''
+  }
+  else {
+    search.classList.add('active');
+    searchBox.focus();
+  }
+})
+
+closeBtn.addEventListener('click', function(){
+  search.classList.remove('active');
+  searchBox.value = '';
+})
+</script>
 <script>
         const text = document.querySelector(".dynamic-text");
         const textLoad = () => {
