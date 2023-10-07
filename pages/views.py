@@ -7,16 +7,31 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
-from .models import ChatMessage
+from .models import ChatMessage,ListeningResource
 import random
-import requests
 from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.core.mail import EmailMessage
+import json
 
-from .tokens import account_activation_token
+
+def search_view(request):
+    if request.method=="POST":
+	    title = request.POST.get('search-title')
+	    if title!="":
+		    results = ListeningResource.objects.filter(title__icontains=title)
+		    context = {
+		    'title': title,
+		    'results':results,
+		    }
+			    
+    
+    
+    return render(request, 'search_results.html', context)
+
+
 
 # req functions
 def activate(request, uidb64, token):
@@ -113,7 +128,7 @@ def handleLogin(request, form_data):
 # Create your views here.
 
 def index(request):
-    return render(request, 'index.html')
+	return render(request, 'index.html')
 
 
 def about(request):
