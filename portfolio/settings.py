@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 #}
 DATABASES = {
     'default': {
-        'ENGINE': django.db.backends.postgresql,
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'portfolio-postgres',
         'USER': os.environ.get('POSTGRES_USER'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
