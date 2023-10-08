@@ -9,11 +9,3 @@ python3.9 manage.py migrate --noinput
 echo "COLLECTING STATIC FILES"
 python3.9 manage.py collectstatic --noinput --clear
 echo "BUILD SUCCESSFUL!"
-echo "SIGNING UP SUPERUSER"
-SUPERUSER_USERNAME="abhinav"
-SUPERUSER_EMAIL="publicgyawali@gmail.com"
-SUPERUSER_PASSWORD="barawa123"
-
-echo "CREATING SUPER USER"
-python3.9 manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('$SUPERUSER_USERNAME', '$SUPERUSER_EMAIL', '$SUPERUSER_PASSWORD')"
-echo "Superuser '$SUPERUSER_USERNAME' created successfully."
