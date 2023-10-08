@@ -1,15 +1,6 @@
 asgiref==3.7.2
-Django
-pytz==2023.3
+Django==4.2.6
+django-adminlte-3==0.1.6
 sqlparse==0.4.4
 tzdata==2023.3
-gunicorn
 whitenoise==6.5.0
-requests==2.31.0
-
-
-
-django-tinymce
-django-crispy-forms
-django-recaptcha
-six
