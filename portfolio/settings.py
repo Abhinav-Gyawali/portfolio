@@ -14,15 +14,15 @@ SECRET_KEY = 'django-insecure-#v8y2-^#c#zy2j33o(v#@qmu+7=%os(f)8$@^@@$u#*du@2921
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh','abhinav-gyawali.com.np']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-	'adminlte3',
+	#'adminlte3',
 	# Optional: Django admin theme (must be before django.contrib.admin)
-	'adminlte3_theme',
+	#'adminlte3_theme',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
