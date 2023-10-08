@@ -10,5 +10,15 @@ echo "COLLECTING STATIC FILES"
 python3.9 manage.py collectstatic --noinput --clear
 echo "BUILD SUCCESSFUL!"
 echo "SIGNING UP SUPERUSER"
-python manage.py createsuperuser --username=abhinav --email=publicgyawali@gmail.com --noinput
-echo "success"
+SUPERUSER_USERNAME="abhinav"
+SUPERUSER_EMAIL="publicgyawali@gmail.com"
+SUPERUSER_PASSWORD="barawa123"
+
+echo "CREATING SUPER USER"
+python "$MANAGE_PY_PATH" createsuperuser --username "$SUPERUSER_USERNAME" --email "$SUPERUSER_EMAIL" --noinput
+
+
+echo "CHANGING PASSWORD"
+python manage.py changepassword "$SUPERUSER_USERNAME" "$SUPERUSER_PASSWORD"
+
+echo "Superuser '$SUPERUSER_USERNAME' created successfully."
