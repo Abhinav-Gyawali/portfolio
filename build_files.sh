@@ -15,10 +15,5 @@ SUPERUSER_EMAIL="publicgyawali@gmail.com"
 SUPERUSER_PASSWORD="barawa123"
 
 echo "CREATING SUPER USER"
-python "$MANAGE_PY_PATH" createsuperuser --username "$SUPERUSER_USERNAME" --email "$SUPERUSER_EMAIL" --noinput
-
-
-echo "CHANGING PASSWORD"
-python manage.py changepassword "$SUPERUSER_USERNAME" "$SUPERUSER_PASSWORD"
-
+python3.9 manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('$SUPERUSER_USERNAME', '$SUPERUSER_EMAIL', '$SUPERUSER_PASSWORD')"
 echo "Superuser '$SUPERUSER_USERNAME' created successfully."
