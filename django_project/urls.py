@@ -25,5 +25,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls'))
 ]
-urlpatterns += static (settings.STATIC_URL, document_root=settings.STATIC_ROOT) # new
 handler404 = 'pages.views.handling_404'
