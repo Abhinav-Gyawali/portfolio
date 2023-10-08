@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+import django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
