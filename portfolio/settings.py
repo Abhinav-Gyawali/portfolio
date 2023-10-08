@@ -20,9 +20,9 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-	#'adminlte3',
+	'adminlte3',
 	# Optional: Django admin theme (must be before django.contrib.admin)
-	#'adminlte3_theme',
+	'adminlte3_theme',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -109,8 +109,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles_build','static')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+STATIC_ROOT = [os.path.join(BASE_DIR,'staticfiles_build','static'),]
 
 
 # Default primary key field type
