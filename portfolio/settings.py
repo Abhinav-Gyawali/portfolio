@@ -80,6 +80,9 @@ DATABASES = {
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'HOST': os.environ.get('POSTGRES_HOST'),  # or your database host
         'PORT':'',           # leave empty to use default PostgreSQL port (5432)
+        'OPTIONS': {
+        'sslmode': 'require',
+        },
     }
 }
 
