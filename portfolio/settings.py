@@ -75,11 +75,11 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'portfolio-postgres',
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': os.environ.get('POSTGRES_HOST'),  # or your database host
-        'PORT':'',           # leave empty to use default PostgreSQL port (5432)
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': 'kzDN5amxn1Vv',
+        'HOST': 'ep-bold-water-62007895.us-east-1.postgres.vercel-storage.com',  # or your database host
+        'PORT':'5432',           # leave empty to use default PostgreSQL port (5432)
         'OPTIONS': {
         'sslmode': 'require',
         },
