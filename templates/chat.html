@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot</title>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        padding: 20px;
+        }
+        .chat-container {
+        max-width: 500px;
+        height:80vh;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        }
+        .chat-message {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        
+        }
+        .user-message {
+        background-color: #d5f5e3;
+        text-align: right;
+        }
+        .bot-message {
+        background-color: #eaeaea;
+        text-align: left;
+        }
+        #chat-log {
+        height:83%; /* Adjust the desired height */
+        overflow-y: auto;
+        }
+        .chat-form {
+        display: flex;
+        margin-top: 20px;
+        }
+        .chat-form input[type="text"] {
+        flex-grow: 1;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        }
+        .chat-form input[type="submit"] {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h1>Chat Bot</h1>
+        <div id="chat-log">
+            {% for chat_message in chat_messages %}
+            <p class="chat-message user-message">{{ chat_message.message }}</p>
+            <p class="chat-message bot-message">{{ chat_message.reply }}</p>
+            {% endfor %}
+            
+        </div>
+
+        <form id="chat-form" class="chat-form" method="POST" action="">
+            {% csrf_token %}
+            <input type="text" name="message" placeholder="Enter your message">
+            <input type="submit" Value="SEND">
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function () {
+    $("#chat-form").submit(function (event) {
+    event.preventDefault();
+    var formData = $(this).serialize();
+    $.ajax({
+    url: '/bot',
+    type: 'POST',
+    data: formData,
+    success: function (response) {
+    var chat_messages = response.chat_messages;
+    $("#chat-log").empty();
+    for (var i = 0; i < chat_messages.length; i++) {
+    var message = chat_messages[i].message;
+    var reply = chat_messages[i].reply;
+    $("#chat-log").append('<p class="chat-message user-message">' + message + '</p>');
+    $("#chat-log").append('<p class="chat-message bot-message">' + reply + '</p>');
+    }
+    $("#chat-log").scrollTop($("#chat-log")[0].scrollHeight);
+    }
+    });
+    $(this).trigger("reset");
+    });
+    });
+    </script>
+    
+   
+</body>
+</html>

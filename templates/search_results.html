@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock title %}
+{% block body %}
+<style type="text/css">
+.search-section{
+position:relative;
+height:80px;
+width:100%;
+}
+.search-btn, .close-btn{
+  left:80%;
+  width: 40px;
+  height: 40px;
+  font-size: 25px;
+  background-color: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  transition: all 0.25s ease;
+  border-radius:50%;
+}
+
+.close-btn {
+  color: rgb(255, 83, 26);
+  z-index: -1;
+}
+
+.search-box {
+
+  position:absolute;
+  width: 40px;
+  height: 40px;
+  left:80%;
+  padding: 15px;
+  border-radius: 25px;
+  background-color: white;
+  color: black;
+  outline: none;
+  border: none;
+  transition: all 0.25s ease;
+}
+
+.search {
+width:100%;
+top:10px;
+  display: flex;
+  position :absolute;
+}
+
+.active .search-box {
+  width: 85%;
+  left:3%;
+}
+
+.active .search-btn{
+  transform: translate(-10px, 1px) scale(0.8);
+  background-color: transparent;
+}
+
+.active .close-btn {
+  z-index: 0;
+  transform: translate(40px, 0px);
+}
+
+
+
+/* styles.css */
+.product-box {
+border:1px solid white;
+border-radius:5px;
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    gap: 20px; /* Adjust the gap between elements as needed */
+}
+
+.product-box img {
+    width: 100px;
+    height: auto;
+}
+
+.product-details {
+    flex: 1; /* Allow this div to grow to fill available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items at the top of the div */
+}
+
+.product-title {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.product-description {
+    font-size: 1rem;
+    color: #666;
+}
+
+.product-price {
+    font-size: 1.25rem;
+    color: #ff6600;
+    font-weight: bold;
+}
+</style>
+<section class="search-section">
+<div class="active search">
+<form action="/search" method="post" id="search-form">
+{% csrf_token %}
+        <input type="text" class="search-box" name="search-title" id="search-title" placeholder="Search...">
+        <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i></button>
+        </form>
+        
+        <button class="close-btn" id="close-btn"><i class="fa-solid fa-xmark" style="color: #0000000;"></i></button>
+      </div>
+</section>
+
+
+
+<div class="product-container">
+    {% for result in results %}
+        
+        <div class="product-box">
+        <a href="{{ result.Url }}">
+        <img src="{{ result.product_image }}" alt="Product Image" class="product-image">
+        <h2 class="product-title">{{ result.title }}</h2>
+        <p class="product-description">{{ result.desc }}</p>
+        <p class="product-price">{{ result.product_price }}</p>
+       </a>
+        </div>
+       
+    {% empty %}
+        <br><br><center><h3><li>No results found for {{ title }}</li></h3></center>
+    {% endfor %}
+</div>
+    
+<script type="text/javascript">
+document.querySelector("#close-btn").addEventListener("click", function() {
+  const inputElement = document.getElementById("search-title");
+  inputElement.value = "";
+});
+</script>
+{% endblock body %}

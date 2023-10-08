@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" href="static/images/icon.png">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, shrink_to_fit=no">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% block style %}{% endblock style %}">
+<script src="https://kit.fontawesome.com/92608aa66e.js" crossorigin="anonymous"></script>
+<title>{% block title %}{% endblock title %} - Abhinav G'</title>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <div class="brand"><a href="/">Abhinav G'</a></div>
+    <div class="nav-items">
+      <ul>
+        <a href="/"><li>Home</li></a>
+        <a href="/about"><li>About</li></a>
+        <a href="/services"><li>Services</li></a>
+        <a href="/projects"><li>Projects</li></a>
+        <a href="/contact-me"><li>Contact</li></a>
+      </ul>
+    </div>
+   <div class="buttons">
+    <div class="signup-btn">
+    <a href="/signup"><i class="fa-solid fa-lg fa-user"></i></a>
+    </div>
+    <div id="menu-btn" class="menu-btn">
+    <i class="fa-solid fa-lg fa-bars"></i>
+    </div>
+    </div>
+  </nav>
+</header>
+
+{% for message in messages  %}            
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <strong>Message : </strong> {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+      {% endfor %}
+
+<main>
+{% block body %}
+{% endblock body %}
+</main>
+<hr>
+<br>
+<footer>
+<ul class="social-links">
+<li><a href="https://facebook.com/abhinav.gyawali14" target="_blank"><i color="white" class="fa-brands fa-facebook"></i></a></li>
+<li><a href="https://twitter.com/Abhi_Gyawali_14" target="_blank"><i color="white" class="fa-brands fa-twitter"></i></a></li>
+<li><a href="https://instagram.com/abhinav.gyawali14" target="_blank"><i color="white" class="fa-brands fa-instagram"></i></a></li>
+<li><a href="https://GitHub.com/Abhinav-Gyawali" target="_blank"><i color="white" class="fa-brands fa-github"></i></a></li>
+</ul>
+<ul class="links">
+<li><a href="/" >Home</a></li>
+<li><a href="/services" >Services</a></li>
+<li><a href="/projects" >Projects</a></li>
+<li><a href="/about" >About</a></li>
+</ul>
+<div class="copy">Copyright &copy 2023 AbhinavGyawali.com</div>
+</footer>
+<script>
+document.querySelector("#menu-btn").addEventListener("click", () => {
+  document.querySelector(".navbar ul").classList.toggle("active");
+});
+</script>
+<script type="text/javascript">
+document.querySelector('section').addEventListener("touchstart",function(){
+document.querySelector(".navbar ul").classList.remove("active");
+
+});
+</script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
