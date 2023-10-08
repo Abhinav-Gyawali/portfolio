@@ -1,7 +1,5 @@
 from pathlib import Path
 import os
-import dj_database_url
-from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -74,7 +72,16 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 #}
-DATABASES['default']=dj_database_url.config()
+DATABASES = {
+    'default': {
+        'ENGINE': django.db.backends.postgresql,
+        'NAME': 'portfolio-postgres',
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_HOST'),  # or your database host
+        'PORT':'',           # leave empty to use default PostgreSQL port (5432)
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
