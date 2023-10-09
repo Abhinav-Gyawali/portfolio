@@ -29,7 +29,13 @@ def search_view(request):
     
     return render(request, 'search_results.html', context)
 
-
+def check_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username', None)
+        if username:
+            user_exists = User.objects.filter(username=username).exists()
+            return JsonResponse({'exists': user_exists})
+    return JsonResponse({'exists': False})
 
 # req functions
 def activate(request, uidb64, token):
@@ -89,15 +95,19 @@ def handleSignup(request, form_data):
         messages.error(request, 'Passwords do not match')
         return redirect('home')
 
-    # Create the user
-    myuser = User.objects.create_user(username, email, pass1)
-    myuser.first_name = fname
-    myuser.last_name = lname
-    myuser.is_active = False
-    myuser.save()
-    messages.success(request, 'Your account has been successfully created')
-    activateEmail(request,username, email)
-    return redirect('home')
+    try:
+	    myuser = User.objects.create_user(username, email, pass1)
+	    myuser.first_name = fname
+	    myuser.last_name = lname
+	    myuser.is_active = False
+	    myuser.save()
+	    messages.success(request, 'Your account has been successfully created')
+	    activateEmail(request,username, email)
+	    return redirect('home')
+	except IntegrityError:
+		message.error(request,'User with this user name already exists')
+	except:
+		message.error(request,'Some error occured')
 
 
 def handleLogin(request, form_data):
