@@ -108,9 +108,9 @@ def handleSignup(request, form_data):
         activateEmail(request, user, email)
         return redirect('home')
     except IntegrityError:
-        message.error(request, 'User with this user name already exists')
+        messages.error(request, 'User with this user name already exists')
     except:
-        message.error(request, 'Some error occurred')
+        messages.error(request, 'Some error occurred')
 
 
 
