@@ -79,30 +79,32 @@
  </div>
  </div>
  <script>
- const username = document.getElementById('username');
- username.addEventListner('keyup',function() {
- const usernameInput = username.value;
- const usernameAvailability = document.getElementById('checker');
- console.log(usernameInput);
- if (usernameInput) {
- // Perform an AJAX request to check username availability
- fetch(`/check-user/?username=${usernameInput}`)
- .then(response => response.json())
- .then(data => {
- if (data.is_available) {
- usernameAvailability.innerHTML = '&#10004;';
- console.log('IS_AVAILABLE')  // Display a tick
- } else {
- usernameAvailability.innerHTML = '&#10060;'; 
- console.log('ISnot_AVAILABLE')// Display a cross
+ $(document).ready(function() {
+ $("#username").keyup(function() {
+ var dataField = $("#username").val(); // Get the value of your input field.
+ 
+ // Send the data to your Django view using AJAX.
+ $.ajax({
+ type: "POST",
+ url: "{% url 'check_user' %}", // Replace with the URL of your Django view.
+ data: {
+ csrfmiddlewaretoken: "{{ csrf_token }}",
+ data_field: dataField
+ },
+ success: function(response) {
+    var isAvailable = response.is_available;
+    if (isAvailable) {
+    console.log('hlo');
+    $("#checker").text("U+2713");
+    } else {
+    console.log('log');
+    $("#checker").text("U+2717");
+    }
+ console.log(response);
  }
- })
- .catch(error => console.error(error));
- } else {
- usernameAvailability.innerHTML = '';
- console.log('Not input') // Clear the availability status
- }
- }
+ });
+ });
+ });
  </script>
 <script type="text/javascript">
 let wrapper = document.querySelector('.wrapper'),
