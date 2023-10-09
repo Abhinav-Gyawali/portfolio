@@ -14,7 +14,7 @@
  <div class="form-group">
  <input name="username" id="username" type="text">
  <label for="username">username</label>
- <span id="checker" class="fas"></span>
+ <span id="checker" class="fas fa-2xl"></span>
  <i class="fas fa-user"></i>
  </div>
  <div class="name-wrap">
@@ -95,12 +95,16 @@
     var isAvailable = response.is_available;
     if (!isAvailable) {
     console.log('hlo');
-    $("#checker").addClass("fa-check");
-    $("#checker").removeClass("fa-xmark");
+    $("#checker")
+		    .removeClass("fa-xmark")
+		    .addClass("fa-check")
+		    .css('color','green');
     } else {
     console.log('log');
-    $("#checker").addClass("fa-xmark");
-    $("#checker").removeClass("fa-check");
+    $("#checker")
+		    .addClass("fa-xmark")
+		    .removeClass("fa-check")
+		    .css('color','red');
     }
  console.log(response);
  }
