@@ -94,19 +94,16 @@
  success: function(response) {
     var isAvailable = response.is_available;
     if (!isAvailable) {
-    console.log('hlo');
     $("#checker")
 		    .removeClass("fa-xmark")
 		    .addClass("fa-check")
 		    .css('color','green');
     } else {
-    console.log('log');
     $("#checker")
 		    .addClass("fa-xmark")
 		    .removeClass("fa-check")
 		    .css('color','red');
     }
- console.log(response);
  }
  });
  });

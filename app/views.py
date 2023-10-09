@@ -102,13 +102,18 @@ def handleSignup(request, form_data):
         myuser.last_name = lname
         myuser.is_active = False
         myuser.save()
+        user = User.objects.get(username=username)
         messages.success(request, 'Your account has been successfully created')
-        activateEmail(request, username, email)
+        activateEmail(request, user, email)
         return redirect('home')
     except IntegrityError:
         message.error(request, 'User with this user name already exists')
     except:
         message.error(request, 'Some error occurred')
+
+
+
+
 def handleLogin(request, form_data):
     username = form_data.get('loginUsername')
     password = form_data.get('loginPassword')
