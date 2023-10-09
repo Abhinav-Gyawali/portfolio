@@ -141,8 +141,8 @@ EMAIL_HOST_USER = os.environ.get('EMAI_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = os.environ.get('EMAIL_PORT')
 EMAIL_USE_TLS = True
-
-PASSWORD_RESET_TIMEOUT = int(os.environ.get('PASSWORD_RESET_TIMEOUT'))
+PRT = os.environ.get('PASSWORD_RESET_TIMEOUT')
+PASSWORD_RESET_TIMEOUT = 15500
 
 STATICFILES_DIRS = os.path.join(BASE_DIR,'static'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
