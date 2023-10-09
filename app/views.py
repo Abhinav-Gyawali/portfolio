@@ -66,12 +66,7 @@ def activateEmail(request, user, to_email):
             received activation link to confirm and complete the registration. <b>Note:</b> Check your spam folder.')
     else:
         messages.error(request, f'Problem sending confirmation email to {to_email}, check if you typed it correctly.')
-...
-
-
-def activateEmail(request, user, to_email):
-    messages.success(request, f'Dear <b>{user.username}</b>, please go to you email <b>{to_email}</b> inbox and click on \
-        received activation link to confirm and complete the registration. <b>Note:</b> Check your spam folder.')
+        
 
 def handleSignup(request, form_data):
     # Get the post parameters
@@ -101,7 +96,7 @@ def handleSignup(request, form_data):
     myuser.is_active = False
     myuser.save()
     messages.success(request, 'Your account has been successfully created')
-    activateEmail(request, email)
+    activateEmail(request,username, email)
     return redirect('home')
 
 
