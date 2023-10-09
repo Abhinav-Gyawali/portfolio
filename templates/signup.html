@@ -83,21 +83,24 @@
  username.addEventListner('keyup',function() {
  const usernameInput = username.value;
  const usernameAvailability = document.getElementById('checker');
- 
+ console.log(usernameInput);
  if (usernameInput) {
  // Perform an AJAX request to check username availability
  fetch(`/check-user/?username=${usernameInput}`)
  .then(response => response.json())
  .then(data => {
  if (data.is_available) {
- usernameAvailability.innerHTML = '&#10004;'; // Display a tick
+ usernameAvailability.innerHTML = '&#10004;';
+ console.log('IS_AVAILABLE')  // Display a tick
  } else {
- usernameAvailability.innerHTML = '&#10060;'; // Display a cross
+ usernameAvailability.innerHTML = '&#10060;'; 
+ console.log('ISnot_AVAILABLE')// Display a cross
  }
  })
  .catch(error => console.error(error));
  } else {
- usernameAvailability.innerHTML = ''; // Clear the availability status
+ usernameAvailability.innerHTML = '';
+ console.log('Not input') // Clear the availability status
  }
  }
  </script>
