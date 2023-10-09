@@ -30,15 +30,14 @@ def search_view(request):
     return render(request, 'search_results.html', context)
 
 def check_user(request):
-    if request.method == 'POST':
-        username = request.POST.get('username', None)
-        data = {
-        'is_available': not User.objects.filter(username=username).exists()
-        }
-        return JsonResponse(data)
-        if username:
-            user_exists = User.objects.filter(username=username).exists()
-            return JsonResponse({'exists': user_exists})
+    username = request.GET.get('username', None)
+    data = {
+    'is_available': not User.objects.filter(username=username).exists()
+    }
+    return JsonResponse(data)
+    if username:
+        user_exists = User.objects.filter(username=username).exists()
+        return JsonResponse({'exists': user_exists})
     return JsonResponse({'exists': False})
 
 # req functions
