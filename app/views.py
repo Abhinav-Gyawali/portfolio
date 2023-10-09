@@ -83,7 +83,6 @@ def handleSignup(request, form_data):
     pass1 = form_data.get('pass1')
     pass2 = form_data.get('pass2')
 
-    
     if len(username) > 10:
         messages.error(request, 'Your username must be under 10 characters')
         return redirect('home')
@@ -91,25 +90,24 @@ def handleSignup(request, form_data):
     if username.isalnum() == False:
         messages.error(request, 'Username should only contain letters and numbers')
         return redirect('home')
+
     if pass1 != pass2:
         messages.error(request, 'Passwords do not match')
         return redirect('home')
 
     try:
-	    myuser = User.objects.create_user(username, email, pass1)
-	    myuser.first_name = fname
-	    myuser.last_name = lname
-	    myuser.is_active = False
-	    myuser.save()
-	    messages.success(request, 'Your account has been successfully created')
-	    activateEmail(request,username, email)
-	    return redirect('home')
-	except IntegrityError:
-		message.error(request,'User with this user name already exists')
-	except:
-		message.error(request,'Some error occured')
-
-
+        myuser = User.objects.create_user(username, email, pass1)
+        myuser.first_name = fname
+        myuser.last_name = lname
+        myuser.is_active = False
+        myuser.save()
+        messages.success(request, 'Your account has been successfully created')
+        activateEmail(request, username, email)
+        return redirect('home')
+    except IntegrityError:
+        message.error(request, 'User with this user name already exists')
+    except:
+        message.error(request, 'Some error occurred')
 def handleLogin(request, form_data):
     username = form_data.get('loginUsername')
     password = form_data.get('loginPassword')
