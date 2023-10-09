@@ -93,14 +93,14 @@
  },
  success: function(response) {
     var isAvailable = response.is_available;
-    if (isAvailable) {
+    if (!isAvailable) {
     console.log('hlo');
-    $("#checker").addClass("fa-tick");
-    $("#checker").removeClass("fa-cross");
+    $("#checker").addClass("fa-check");
+    $("#checker").removeClass("fa-xmark");
     } else {
     console.log('log');
-    $("#checker").addClass("fa-cross");
-    $("#checker").removeClass("fa-tick");
+    $("#checker").addClass("fa-xmark");
+    $("#checker").removeClass("fa-check");
     }
  console.log(response);
  }

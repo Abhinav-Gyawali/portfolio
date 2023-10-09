@@ -33,7 +33,7 @@ def check_user(request):
 	if request.method=='POST':
 	    username = request.POST.get('data_field')
 	    data = {
-	    'is_available': not User.objects.filter(username=username).exists()
+	    'is_available':User.objects.filter(username=username).exists()
 	    }
 	    return JsonResponse(data)
 	    
