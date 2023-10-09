@@ -95,10 +95,12 @@
     var isAvailable = response.is_available;
     if (isAvailable) {
     console.log('hlo');
-    $("#checker").text("&#10004;");
+    $("#checker").addClass("fa-tick");
+    $("#checker").removeClass("fa-cross");
     } else {
     console.log('log');
-    $("#checker").text("&#10060;");
+    $("#checker").addClass("fa-cross");
+    $("#checker").removeClass("fa-tick");
     }
  console.log(response);
  }
