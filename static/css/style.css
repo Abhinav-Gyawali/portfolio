@@ -154,7 +154,6 @@ nav .menu-btn i {
   }
 
   nav .buttons {
-    margin-left: 150px;
     display: flex;
     gap: 20px;
     align-items: center;
@@ -192,4 +191,3 @@ img {
 
 
 /* search  */
-

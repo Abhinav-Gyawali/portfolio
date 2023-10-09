@@ -31,7 +31,7 @@ def search_view(request):
 
 def check_user(request):
 	if request.method=='POST':
-	    username = data_field
+	    username = request.POST.get('data_field')
 	    data = {
 	    'is_available': not User.objects.filter(username=username).exists()
 	    }

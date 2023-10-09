@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" href="static/images/icon.png">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, shrink_to_fit=no">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="/storage/emulated/0/portfolio/static/css/test.css">
+<script src="https://kit.fontawesome.com/92608aa66e.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<title>Test - Abhinav G'</title>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <div class="brand"><a href="/">Abhinav G'</a></div>
+    <div class="nav-items">
+      <ul>
+        <a href="/"><li>Home</li></a>
+        <a href="/about"><li>About</li></a>
+        <a href="/services"><li>Services</li></a>
+        <a href="/projects"><li>Projects</li></a>
+        <a href="/contact-me"><li>Contact</li></a>
+      </ul>
+    </div>
+   <div class="buttons">
+    <div class="signup-btn">
+    <a href="/signup"><i class="fa-solid fa-lg fa-user"></i></a>
+    </div>
+    <div id="menu-btn" class="menu-btn">
+    <i class="fa-solid fa-lg fa-bars"></i>
+    </div>
+    </div>
+  </nav>
+</header>
+<main>
+
+
+
+<section class="first-section">
+
+
+<div class="search">
+<form action="/search" method="post" id="search-form">
+        <input type="text" class="search-box" name="search-title" id="search-title" placeholder="Search...">
+        <input id="search_data" value="" type="submit">
+        </form>
+        <button onClick="activity()" class="search-btn"><i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i></button>
+        <button class="close-btn"><i class="fa-solid fa-xmark" style="color: #0000000;"></i></button>
+      </div>
+<div class="left-section">
+Hi!<br>
+Myself <nobr class="name">Abhinav.</nobr><br>
+<div class="anim-left-section">
+I'm a <span class="dynamic-text"></span>
+</div><br>
+</div>
+<div class="right-section">
+<img src="static/images/developer.png">
+</div>
+</section>
+<section class="second-section">
+<div class="exp">My <nobr>Work Experience</nobr></div>
+<div class="main-lines-pc">
+<div class="line-items-pc">
+<div class="text-pc html">HTML</div>
+<img class="html-img img" src="static/images/html.png" alt="imghtml">
+</div>
+
+<div class="line-items-pc small-lines">
+<div class="line-js small-line"></div>
+<img class="js-img" src="static/images/js.png" alt="jsimg">
+</div>
+<div class="line-items-pc">
+<div class="line-pc"></div>
+<div class="text-pc python">Python</div>
+<div class="py-lines-pc">
+<div class="py-line-items-pc">
+<div class="py-text-pc django" >Django</div>
+<img class="django-img img" src="static/images/django.png" alt="imgdjg">
+</div>
+<div class="py-line-items-pc">
+<div class="py-text-pc flask">Flask</div>
+<img class="flask-img img" src="static/images/flask.png" alt="imgfsk">
+</div>
+<div class="py-line-items-pc">
+<div class="py-text-pc others">Others</div>
+<img class="others-img img" src="static/images/python.png" alt="imgpy">
+</div>
+</div>
+</div>
+<div class="line-items-pc small-lines">
+<div class="line-c small-line"></div>
+<img class="c-img" src="static/images/c.png" alt="cimg">
+</div>
+<div class="line-items-pc">
+<div class="text-pc css">CSS</div>
+<img class="css-img img" src="static/images/css.png" alt="imgcss">
+</div>
+</div>
+<div class="main-lines">
+<div class="line-items">
+<div class="line"></div>
+<div class="text">HTML</div>
+<img src="static/images/html.png" alt="img">
+</div>
+<div class="line-items">
+<div class="line"></div>
+<div class="text">C</div>
+<img src="static/images/c.png" alt="img">
+</div>
+<div class="line-items">
+<div class="line"></div>
+<div class="text">CSS</div>
+<img src="static/images/css.png" alt="img">
+</div>
+<div class="line-items">
+<div class="line"></div>
+<div class="text">JS</div>
+<img src="static/images/js.png" alt="img">
+</div>
+<div class="line-items py">
+<div class="line py-li"></div>
+<div class="text">Python</div>
+<div class="py-lines">
+<div class="py-line-items">
+<div class="py-line"></div>
+<div class="py-text">Django</div>
+<img src="static/images/django.png" alt="img">
+</div>
+<div class="py-line-items">
+<div class="py-line"></div>
+<div class="py-text">Flask</div>
+<img src="static/images/flask.png" alt="img">
+</div>
+<div class="py-line-items">
+<div class="py-line"></div>
+<div class="py-text">Others</div>
+<img src="static/images/python.png" alt="img">
+</div>
+</div>
+</div>
+</div>
+
+</section>
+<script type="javascript">
+
+</script>
+<script type="text/javascript">
+const searchBox = document.querySelector('.search-box');
+const searchBtn = document.querySelector('.search-btn');
+const search = document.querySelector('.search');
+const closeBtn = document.querySelector('.close-btn');
+
+searchBtn.addEventListener('click', function(){
+  console.log(search.classList.contains('active'));
+  if(search.classList.contains('active')){
+    searchBox.value = ''
+  }
+  else {
+    search.classList.add('active');
+    searchBox.focus();
+  }
+})
+
+closeBtn.addEventListener('click', function(){
+  search.classList.remove('active');
+  searchBox.value = '';
+})
+</script>
+<script>
+        const text = document.querySelector(".dynamic-text");
+        const textLoad = () => {
+            setTimeout(() => {
+                text.textContent = "Developer.";
+            }, 0);
+            setTimeout(() => {
+                text.textContent = "Designer.";
+            }, 4000);
+            setTimeout(() => {
+                text.textContent = "Student.";
+            }, 8000); //1s = 1000 milliseconds
+        }
+        textLoad();
+        setInterval(textLoad, 12000);
+    </script>
+
+
+
+
+
+</main>
+<hr>
+<br>
+<footer>
+<ul class="social-links">
+<li><a href="https://facebook.com/abhinav.gyawali14" target="_blank"><i color="white" class="fa-brands fa-facebook"></i></a></li>
+<li><a href="https://twitter.com/Abhi_Gyawali_14" target="_blank"><i color="white" class="fa-brands fa-twitter"></i></a></li>
+<li><a href="https://instagram.com/abhinav.gyawali14" target="_blank"><i color="white" class="fa-brands fa-instagram"></i></a></li>
+<li><a href="https://GitHub.com/Abhinav-Gyawali" target="_blank"><i color="white" class="fa-brands fa-github"></i></a></li>
+</ul>
+<ul class="links">
+<li><a href="/" >Home</a></li>
+<li><a href="/services" >Services</a></li>
+<li><a href="/projects" >Projects</a></li>
+<li><a href="/about" >About</a></li>
+</ul>
+<div class="copy">Copyright &copy 2023 AbhinavGyawali.com</div>
+</footer>
+<script>
+document.querySelector("#menu-btn").addEventListener("click", () => {
+  document.querySelector(".navbar ul").classList.toggle("active");
+});
+</script>
+<script type="text/javascript">
+document.querySelector('section').addEventListener("touchstart",function(){
+document.querySelector(".navbar ul").classList.remove("active");
+
+});
+</script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
