@@ -12,7 +12,7 @@
  <div class="form">
  <h2>sign up</h2>
  <div class="form-group">
- <input name="username" onkeyup="checkUsernameAvailability()" type="text">
+ <input name="username" type="text">
  <label for="username">username</label>
  <span id="checker" class="fas"></span>
  <i class="fas fa-user"></i>
@@ -79,8 +79,9 @@
  </div>
  </div>
  <script>
- function checkUsernameAvailability() {
- const usernameInput = document.getElementById('username').value;
+ const username = document.getElementById('username');
+ username.addEventListner('keyup',function() {
+ const usernameInput = username.value;
  const usernameAvailability = document.getElementById('checker');
  
  if (usernameInput) {
