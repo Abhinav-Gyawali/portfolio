@@ -32,6 +32,10 @@ def search_view(request):
 def check_user(request):
     if request.method == 'POST':
         username = request.POST.get('username', None)
+        data = {
+        'is_available': not User.objects.filter(username=username).exists()
+        }
+        return JsonResponse(data)
         if username:
             user_exists = User.objects.filter(username=username).exists()
             return JsonResponse({'exists': user_exists})

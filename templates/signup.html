@@ -12,7 +12,7 @@
  <div class="form">
  <h2>sign up</h2>
  <div class="form-group">
- <input name="username" type="text">
+ <input name="username" onkeyup="checkUsernameAvailability()" type="text">
  <label for="username">username</label>
  <span id="checker" class="fas"></span>
  <i class="fas fa-user"></i>
@@ -79,27 +79,26 @@
  </div>
  </div>
  <script>
- $(document).ready(function () {
- $('#username').on('input', function () {
- const username = $(this).val();
- const resultIcon = $('#checker');
+ function checkUsernameAvailability() {
+ const usernameInput = document.getElementById('username').value;
+ const usernameAvailability = document.getElementById('checker');
  
- $.ajax({
- type: 'POST',
- url: '/check_user/',
- data: {username: username},
- success: function (data) {
- if (data.exists) {
- resultIcon.classList.remove('fa-tick');
- resultIcon.classList.add('fa-cross'); // Cross (X)
+ if (usernameInput) {
+ // Perform an AJAX request to check username availability
+ fetch(`/check-user/?username=${usernameInput}`)
+ .then(response => response.json())
+ .then(data => {
+ if (data.is_available) {
+ usernameAvailability.innerHTML = '&#10004;'; // Display a tick
  } else {
- resultIcon.classList.remove('fa-cross');
- resultIcon.classList.add('fa-tick'); // Checkmark
+ usernameAvailability.innerHTML = '&#10060;'; // Display a cross
+ }
+ })
+ .catch(error => console.error(error));
+ } else {
+ usernameAvailability.innerHTML = ''; // Clear the availability status
  }
  }
- });
- });
- });
  </script>
 <script type="text/javascript">
 let wrapper = document.querySelector('.wrapper'),
