@@ -14,6 +14,7 @@ from django.utils.encoding import force_bytes, force_str
 from django.core.mail import EmailMessage
 import json
 from .tokens import account_activation_token
+from django.db import IntegrityError
 
 def search_view(request):
     if request.method=="POST":
