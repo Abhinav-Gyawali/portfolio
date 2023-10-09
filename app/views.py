@@ -36,6 +36,8 @@ def check_user(request):
 	    'is_available': not User.objects.filter(username=username).exists()
 	    }
 	    return JsonResponse(data)
+	    
+	    
 # req functions
 def activate(request, uidb64, token):
     User = get_user_model()
