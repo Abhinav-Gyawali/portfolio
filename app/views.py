@@ -41,23 +41,24 @@ def check_user(request):
 	    
 # req functions
 def activate(request, uidb64, token):
-    User = get_user_model()
     try:
-        uid = force_str(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=uid)
+	    decoded_str = force_str(urlsafe_base64_decode(uidb64))  # Convert bytes to a strin
+	    if decoded_str!="":
+		    uid = int(decoded_str)
+		    user = User.objects.get(pk=uid)
     except(TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
 
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-
         messages.success(request, 'Thank you for your email confirmation. Now you can login your account.')
-        return redirect('login')
+        login(request,user)
+        return redirect('home')
     else:
         messages.error(request, 'Activation link is invalid!')
     
-    return redirect('homepage')
+    return redirect('home')
 
 def activateEmail(request, user, to_email):
     mail_subject = 'Activate your user account.'
@@ -68,13 +69,14 @@ def activateEmail(request, user, to_email):
         'token': account_activation_token.make_token(user),
         'protocol': 'https' if request.is_secure() else 'http'
     })
+    
     email = EmailMessage(mail_subject, message, to=[to_email])
+    email.content_subtype='html'
     if email.send():
-        messages.success(request, f'Dear <b>{user}</b>, please go to you email <b>{to_email}</b> inbox and click on \
-            received activation link to confirm and complete the registration. <b>Note:</b> Check your spam folder.')
+        messages.success(request, f'Dear <b>{user}</b>, please go to your email <b>{to_email}</b> inbox and click on \
+            the received activation link to confirm and complete the registration. <b>Note:</b> Check your spam folder.')
     else:
-        messages.error(request, f'Problem sending confirmation email to {to_email}, check if you typed it correctly.')
-        
+        messages.error(request, f'Problem sending a confirmation email to {to_email}, check if you typed it correctly.')
 
 def handleSignup(request, form_data):
     # Get the post parameters
@@ -98,15 +100,15 @@ def handleSignup(request, form_data):
         return redirect('home')
 
     try:
-        myuser = User.objects.create_user(username, email, pass1)
-        myuser.first_name = fname
-        myuser.last_name = lname
-        myuser.is_active = False
-        myuser.save()
-        user = User.objects.get(username=username)
-        messages.success(request, 'Your account has been successfully created')
-        activateEmail(request, user, email)
-        return redirect('home')
+	    myuser = User.objects.create_user(username, email, pass1)
+	    myuser.first_name = fname
+	    myuser.last_name = lname
+	    myuser.is_active = False
+	    myuser.save()
+	    user = myuser
+	    
+	    activateEmail(request, user, email)
+	    return redirect('home')
     except IntegrityError:
         messages.error(request, 'User with this user name already exists')
     except:

@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -12,13 +13,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#v8y2-^#c#zy2j33o(v#@qmu+7=%os(f)8$@^@@$u#*du@2921'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-debug_env=os.environ.get('DEBUG')
-if debug_env=="TRUE":
-	DEBUG = True
-else:
-	DEBUG = False
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh','abhinav-gyawali.com.np']
+DEBUG=bool(os.environ.get('DEBUG'))
+
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh','abhinav-gyawali.com.np','127.0.0.1']
 
 
 # Application definition
@@ -69,13 +67,13 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -136,12 +134,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_FROM = os.environ.get('EMAIL_FROM')
-EMAIL_HOST_USER = os.environ.get('EMAI_HOST_USER')
+EMAIL_FROM = 'Abhinav G'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_PORT = int(os.environ.get('EMAIL_PORT','587'))
 EMAIL_USE_TLS = True
-PRT = os.environ.get('PASSWORD_RESET_TIMEOUT')
+PRT = int(os.environ.get('PASSWORD_RESET_TIMEOUT','14400'))
 PASSWORD_RESET_TIMEOUT = 15500
 
 STATICFILES_DIRS = os.path.join(BASE_DIR,'static'),
