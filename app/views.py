@@ -122,10 +122,14 @@ def handleLogin(request, form_data):
     password = form_data.get('loginPassword')
 
     user = authenticate(username=username, password=password)
+    
     if user is not None:
         login(request, user)
         messages.success(request, 'Successfully Logged In')
         return redirect('home')
+    elif not user.is_active:
+	    activateEmail(request,user,user.email)
+	    return redirect('home')
     else:
         messages.error(request, 'Invalid credentials! Please try again.')
         return redirect('home')
@@ -133,7 +137,7 @@ def handleLogin(request, form_data):
 
 # Create your views here.
 
-def index(request):
+def home(request):
 	return render(request, 'index.html')
 
 
@@ -190,3 +194,7 @@ def handling_404(request, exception):
     
 def handling_500(request, exception):
     return render(request, '500.html', {})
+    
+def send_email(subject,message,to):
+	email = EmailMessage(mail_subject, message, to)
+	email.content_subtype='html'
