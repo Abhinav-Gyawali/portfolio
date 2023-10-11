@@ -122,17 +122,22 @@ def handleLogin(request, form_data):
     password = form_data.get('loginPassword')
 
     user = authenticate(username=username, password=password)
-    
-    if user is not None:
-        login(request, user)
-        messages.success(request, 'Successfully Logged In')
-        return redirect('home')
-    elif not user.is_active:
-	    activateEmail(request,user,user.email)
-	    return redirect('home')
+    userr = User.objects.get(username=username)
+    if userr is not None:
+	    if not userr.is_active:
+		    activateEmail(request,userr,userr.email)
+		    return redirect('home')
+	    else:
+		    if user is not None:
+			    login(request, user)
+			    messages.success(request, 'Successfully Logged In')
+			    return redirect('home')
+		    else:
+			    messages.error(request, 'Invalid crenditials!')
+			    return redirect('signup')
     else:
-        messages.error(request, 'Invalid credentials! Please try again.')
-        return redirect('home')
+        messages.error(request, 'No user found with this username! If you are not registered please signup')
+        return redirect('signup')
 
 
 # Create your views here.
