@@ -89,6 +89,7 @@ margin:0 0 0 5px;
 
 .second-section{
 padding:0 8%;
+  display:none;
 justify-content:space-around;
 margin:0 0 60% 0;
 }
